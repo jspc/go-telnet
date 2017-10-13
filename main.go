@@ -52,6 +52,8 @@ func main() {
 		keySend := make([]byte, 2)
 		keySend[1] = '\n'
 
+		keySend[0] = byte(keyPress)
+
 		if *wasdMode {
 			switch keyPress {
 			case arrowUp:
@@ -63,8 +65,6 @@ func main() {
 			case arrowRight:
 				keySend[0] = 'd'
 			}
-		} else {
-			keySend[0] = byte(keyPress)
 		}
 
 		conn.Write(keySend)
